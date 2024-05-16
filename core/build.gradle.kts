@@ -89,3 +89,8 @@ class PublishData(private val project: Project) {
             name.plus(append).plus(if (appendCommit && addCommit) "-".plus(commitHash) else "")
     }
 }
+tasks.named('build') {
+    doFirst {
+        project.buildDir = file("${project.projectDir}/build/libs")
+    }
+}
