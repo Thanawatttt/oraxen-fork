@@ -20,7 +20,7 @@ jobs:
       - name: Create release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
           RELEASE_NAME: "v${GITHUB_SHA}"
           RELEASE_BODY: "Automated release"
       - name: Upload JAR file to release
