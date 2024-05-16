@@ -21,7 +21,5 @@ jobs:
         with:
           name: 'oraxen'
           path: oraxen-fork/oraxen-fork/build/libs/oraxen-*.jar
-      - name: Cd ls
-        run: cd libs
-      - name: ls
-        run: ls
+      - name: Check ls
+        run: ls -la libs/
