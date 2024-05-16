@@ -17,3 +17,16 @@ jobs:
         run: chmod +x gradlew
       - name: Publish with Gradle
         run: ./gradlew core:build
+      - name: Create GitHub release (replace with your repository and tag)
+        id: create_release
+        run: |
+          # Get the latest tag from the current branch
+          tag_name=$(git describe --tags --abbrev-ref)
+
+          # Create a release using the tag name
+          github.actions.create-release(
+            repo: ${{ github.repository }},
+            tag_name: $tag_name,
+            name: "Release v$tag_name",
+            body: "Automatically generated release for commit $tag_name."
+          )
