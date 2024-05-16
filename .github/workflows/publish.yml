@@ -27,5 +27,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: oraxen-1.174.0.jar
-          path: ./libs/oraxen-1.174.0.jar
+          path: ./build/libs/oraxen-1.174.0.jar
           retention-days: 30
