@@ -21,4 +21,4 @@ jobs:
         uses: actions/upload-artifact@v4.3.3
         with:
           name: 'oraxen'
-          path: ./build/libs/oraxen-*.jar
+          path: ./build/libs/oraxen-1.174.0.jar
