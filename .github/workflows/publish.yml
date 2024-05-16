@@ -17,16 +17,15 @@ jobs:
         run: chmod +x gradlew
       - name: Publish with Gradle
         run: ./gradlew core:build
-      - name: Create GitHub release (replace with your repository and tag)
-        id: create_release
-        run: |
-          # Get the latest tag from the current branch
-          tag_name=$(git describe --tags --abbrev-ref)
-
-          # Create a release using the tag name
-          github.actions.create-release(
-            repo: ${{ github.repository }},
-            tag_name: $tag_name,
-            name: "Release v$tag_name",
-            body: "Automatically generated release for commit $tag_name."
-          )
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_NAME: "v${GITHUB_SHA}"
+          RELEASE_BODY: "Automated release"
+      - name: Upload JAR file to release
+        uses: actions/upload-artifact@v2
+        with:
+          name: oraxen-1.174.0.jar
+          path: ./libs/oraxen-1.174.0.jar
+          retention-days: 30
